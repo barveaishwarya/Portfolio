@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aishwarya Barve | UI/UX Designer</title>
+    <!-- Google Fonts for a professional look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" xintegrity="sha512-ie2d02aQ2t4c8f5V+x0F6W6zY5+3m4t5c+n/7v5eY5v25lE4T7z3/6u7P7I5w2G+2" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #5a54e6;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --text-color: #212529;
+            --secondary-text: #6c757d;
+            --border-color: #e9ecef;
+            --font-main: 'Poppins', sans-serif;
+            --font-secondary: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Utility classes for layout */
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .flex-center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .section {
+            padding: 35px 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .heading {
+            font-family: var(--font-main);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+        }
+
+        .logo {
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-menu {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: left;
+            padding-top: 60px;
+            background: linear-gradient(135deg, var(--background-color), #e9ecef);
+        }
+
+        .hero .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .hero-image {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero h1 {
+            font-family: var(--font-main);
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin: 0;
+        }
+        
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 500px;
+            margin: 1rem 0 2rem;
+            color: var(--secondary-text);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Hero Section */
+.hero {
+  padding: 20px 0;
+}
+
+.hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.hero-content {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: #6c63ff;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 20px 0;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 24px;
+  background: #6c63ff;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.btn-primary:hover {
+  background: #4a42cc;
+}
+
+/* Resume + Socials */
+.hero-links {
+  display: flex;
+  flex-direction: column; /* stacked vertically */
+  align-items: flex-start; /* align left under text */
+  gap: 10px;
+}
+
+/* Resume button */
+.btn-secondary {
+  padding: 10px 20px;
+  background: #6c63ff;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: #4a42cc;
+}
+
+/* Social icons row */
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-link {
+  font-size: 2rem;
+  color: #6c63ff;
+  transition: 0.3s ease;
+}
+
+.social-link:hover {
+  color: #4a42cc;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-links {
+    align-items: center;
+  }
+}
+
+        
+        /* About Section */
+        .about .container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .about-content h2 {
+            font-family: var(--font-main);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .about-content p {
+            margin-bottom: 1rem;
+            color: var(--secondary-text);
+        }
+
+        .education-cards-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .education-card {
+            background-color: var(--card-background);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .education-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .education-info h3 {
+            font-family: var(--font-main);
+            font-size: 1.25rem;
+            margin: 0;
+            color: var(--text-color);
+        }
+
+        .education-info p {
+            margin: 0.25rem 0 0;
+            color: var(--secondary-text);
+        }
+        
+        /* Skills & Tools Section */
+        .skills .container, .projects .container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .skill-item, .tool-item {
+            background-color: var(--card-background);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-item:hover, .tool-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: var(--card-background);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-family: var(--font-main);
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--secondary-text);
+            margin-bottom: 1rem;
+        }
+
+        .project-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+        
+        .contact .heading {
+            color: #fff;
+        }
+
+        .contact p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--card-background);
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: var(--font-secondary);
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #343a40;
+            color: #adb5bd;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar .container {
+                padding: 0 1rem;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.9);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+                text-align: center;
+                padding: 1rem 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                margin: 0.5rem 0;
+                padding: 0.5rem 0;
+                font-weight:700;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .heading {
+                font-size: 2.5rem;
+            }
+            .about .container {
+                flex-direction: column;
+            }
+            .skills-list {
+                flex-direction: column;
+            }
+            .skill-item, .tool-item {
+                width: 100%;
+                text-align: center;
+            }
+            .education-card {
+                flex-direction: column;
+            }
+            .education-info h3 {
+                text-align: justify;
+            }
+            .hero .container {
+                flex-direction: column;
+            }
+            .hero-content {
+                order: 2;
+                text-align: center;
+                margin-top: 2rem;
+            }
+            .hero-image-container {
+                order: 1;
+                justify-content: center;
+            }
+    
+    
+            .hero-links {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 25px;  /* space between resume + icons */
+}
+
+/* Resume button */
+.btn-secondary {
+    padding: 10px 20px;
+    background: #6c63ff;    /* theme color */
+    color: #fff;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #4a42cc;
+}
+
+/* Social icons */
+.social-link {
+    font-size: 2rem;   /* bigger icons */
+    color: #6c63ff;
+    transition: 0.3s ease;
+}
+
+.social-link:hover {
+    color: #4a42cc;
+}
+
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+<nav class="navbar">
+    <div class="container">
+        <a href="#hero"><img src="portfolio_logo-removebg-preview.png" alt="Portfolio Logo" style="height: 80px; width: auto;"></a>
+        <div class="nav-links">
+            <a href="#hero">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#skills-tools">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </div>
+</nav>
+
+
+    <main>
+       <!-- Hero Section -->
+<section id="hero" class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Hi, I'm <br><span>Aishwarya</span></h1>
+        <p>I'm a UI/UX designer passionate about crafting engaging and intuitive digital experiences.</p>
+  
+        <!-- Main CTA -->
+        <a href="#projects" class="btn-primary">View My Work</a>
+  
+        <!-- Resume + Socials -->
+        <div class="hero-links">
+          <!-- Resume Button -->
+          <a href="./Aishwarya-Barve-Resume-UIUX.pdf"  class="btn-secondary"> View My Resume</a>
+  
+          <!-- Social Icons -->
+          <div class="social-icons">
+            <a href="https://www.behance.net/aishwaryabarve"  class="social-link"><i class="fab fa-behance"></i></a>
+            <a href="https://www.linkedin.com/in/aishwarya-barve-b72590250"  class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/uiux_with_ab?igsh=cXo2M3U0YzdpNWlk"  class="social-link"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+  
+      <div class="hero-image-container">
+        <div class="hero-image">
+          <img src="./image2.png" alt="Aishwarya Barve illustration">
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="about-content text-center">
+                    <h2 class="heading">About Me</h2>
+                    <p>I'm Aishwarya Barve, a recent BCA graduate from Suryadatta Institute of Management and Research Technology, Pune. A self-taught UI/UX designer from India with a background in BCA & MCA.
+                        Though I’m at the beginning of my design career, I’ve already worked on multiple self-driven and academic projects where I applied design thinking, user research, wireframing, and prototyping to solve real problems.
+                        I enjoy turning complex ideas into intuitive and accessible interfaces. I believe in designing with empathy and constantly improving my skills through learning and feedback.
+                        Tools I use include Figma, Framer, and Adobe XD, and I’m currently exploring motion design and accessibility in UX.  </div>
+                <div class="education-cards-container">
+                    <div class="education-card">
+                        <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="education-info">
+                            <h3>Master of Computer Applications (MCA) <br>2024-2026</h3>
+                            <p>Dnyansagar Institute of Management and Research, Balewadi, Pune</p>
+                        </div>
+                    </div>
+                    <div class="education-card">
+                        <div class="education-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="education-info">
+                            <h3>Bachelor of Computer Applications (BCA) <br>2021-2024</h3>
+                            <p>Suryadatta Institute of Management and Research Technology, Pune</p>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills & Tools Section -->
+        <section id="skills-tools" class="section skills">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="heading">My Skills & Tools</h2>
+                </div>
+                <div class="skills-list">
+                    <div class="skill-item">User Research</div>
+                    <div class="skill-item">Wireframing & Prototyping</div>
+                    <div class="skill-item">Design Thinking</div>
+                    <div class="skill-item">Usability Testing</div>
+                    <div class="skill-item">HTML</div>
+                    <div class="skill-item">CSS</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">ReactJS</div>
+                </div>
+                <div class="skills-list">
+                    <div class="tool-item"><img src="figma logo.png" height="70px" width="70px"><br>Figma</div>
+                    <div class="tool-item"><img src="logo framer.png" height="70px" width="70px"><br>Framer</div>
+                    <div class="tool-item"><img src="xd logo.png" height="70px" width="70px"><br>Adobe XD</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <div class="container text-center">
+                <h2 class="heading">Featured Projects</h2>
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="project-card">
+                        <img src="electric-bus.png" alt="Project 1">
+                        <div class="project-info">
+                            <h3>UrbanGo</h3>
+                            <p>Designed a smoother commuting experience through thoughtful UX design<br>
+                                UX Research | UI Design | Prototyping</p>
+                            <a href="https://www.behance.net/gallery/234531147/UrbanGo-Public-Transport-Mobile-App-UX-Case-Study">View Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- Project 2 -->
+                    <div class="project-card">
+                        <img src="project 2.png" alt="Project 2">
+                        <div class="project-info">
+                            <h3>Biryani Adda</h3>
+                            <p>Designed a seamless biryani ordering experience.<br>
+                                User Flows | Visual Design | Usability Testing </p> <a href="https://www.behance.net/gallery/236012177/BiryaniAdda-A-Biryani-Delivery-App">View Case Study<i class="fas fa-arrow-right"></i></a>
+                        </div> 
+                    </div>
+                    <!-- Project 3 -->
+                    <div class="project-card">
+                        <img src="online-shop.png" alt="Project 3">
+                        <div class="project-info">
+                            <h3>E-commerce</h3>
+                            <p>A responsive e-commerce platform designed for easy seamless shopping.<br>
+                                UI Design | Frontend | Responsive
+                            </p>
+                            <a href="https://www.behance.net/gallery/236233799/Aroma-Online-Home-Dcor-Store">View Case Study <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2 class="heading text-center">Let's Connect</h2>
+                <p class="text-center">I'm always open to new opportunities and collaborations. Feel free to reach out and say hi!</p>
+                <div class="contact-form-container">
+                    <form id="contact-form" action="https://formspree.io/f/myzplzzl" method="POST">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="_replyto" required>
+    </div>
+    <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+    <input type="hidden" name="_subject" value="New Contact Form Submission">
+    <button type="submit" class="btn-submit">Send Message</button>
+</form>
+
+<!-- Success / Error message -->
+<p id="form-status" style="display:none; margin-top:1rem; font-weight:600;"></p>
+
+<script>
+document.getElementById("contact-form").addEventListener("submit", async function(event) {
+    event.preventDefault();
+    const form = event.target;
+    const status = document.getElementById("form-status");
+    const data = new FormData(form);
+
+    try {
+        let response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+            status.style.display = "block";
+            status.style.color = "green";
+            status.textContent = "✅ Message sent successfully!";
+            form.reset();
+        } else {
+            throw new Error("Form submission failed");
+        }
+    } catch (error) {
+        status.style.display = "block";
+        status.style.color = "red";
+        status.textContent = "❌ Oops! Something went wrong. Please try again.";
+    }
+});
+</script>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Aishwarya Barve. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu and Smooth Scrolling -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');    
+            const navLinks = document.querySelector('.nav-links');
+            const navBar = document.querySelector('.navbar');
+
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close the mobile menu when a link is clicked
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling logic
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
